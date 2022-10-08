@@ -1,3 +1,4 @@
 .env
 deviceList.json
 db.sqlite3
+settings.py
