@@ -1,4 +1,4 @@
 .env
 deviceList.json
 db.sqlite3
-settings.py
+settings.py.sample
