@@ -22,5 +22,5 @@ app_name = 'home'
 urlpatterns = [
     #path('', admin.site.urls),
     path('admin/', admin.site.urls),
-    path('', views.home_template, name='home'),
+    path('home/', include('mypages.urls')),
 ]
