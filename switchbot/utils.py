@@ -5,6 +5,7 @@ import hmac
 import base64
 import requests
 import json
+import db
 from dotenv import load_dotenv
 
 base_url = 'https://api.switch-bot.com'
@@ -43,11 +44,13 @@ def get_device_list(deviceListJson='./deviceList.json'):
         res = requests.get(devices_url, headers=headers)
         res.raise_for_status()
 
-        print(res.text)
+        #print(res.text)
         deviceList = json.loads(res.text)
+        db.update_devicedb(deviceList["body"]["deviceList"])
         # 取得データをjsonファイルに書き込み
         with open(deviceListJson, mode='wt', encoding='utf-8') as f:
             json.dump(deviceList, f, ensure_ascii=False, indent=2)
+        
 
     except requests.exceptions.RequestException as e:
         print('response error:',e)
