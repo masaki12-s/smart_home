@@ -23,4 +23,5 @@ urlpatterns = [
     #path('', admin.site.urls),
     path('admin/', admin.site.urls),
     path('home/', include('mypages.urls')),
+    path('device/', include('mypages.urls'))
 ]
