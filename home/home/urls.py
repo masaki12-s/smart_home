@@ -23,5 +23,5 @@ urlpatterns = [
     # path('', admin.site.urls),
     # path('admin/', admin.site.urls),
     path('', include('mypages.urls')),
-    path('devices/', include('devices.urls'))
+    path('device/', include('devices.urls'))
 ]

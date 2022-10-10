@@ -8,11 +8,11 @@ host = os.getenv("host")
 user = os.getenv("user")
 password = os.getenv("password")
 
-db = os.getenv("db")
+dbname = os.getenv("db")
 
 
 def create_devicedb():
-    with pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor) as db:
+    with pymysql.connect(host=host, user=user, password=password, db=dbname, cursorclass=pymysql.cursors.DictCursor) as db:
         cursor = db.cursor()
         query = 'create table device_device (deviceId varchar(20), deviceName varchar(20), deviceType varchar(20), hubDeviceId varchar(20));'
         cursor.execute(query)
@@ -20,7 +20,7 @@ def create_devicedb():
 
 
 def drop_devicedb():
-    with pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor) as db:
+    with pymysql.connect(host=host, user=user, password=password, db=dbname, cursorclass=pymysql.cursors.DictCursor) as db:
         cursor = db.cursor()
         query = 'DROP TABLE device_device;'
         cursor.execute(query)
@@ -28,7 +28,7 @@ def drop_devicedb():
 
 
 def update_devicedb(deviceList: dict):
-    with pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor) as db:
+    with pymysql.connect(host=host, user=user, password=password, db=dbname, cursorclass=pymysql.cursors.DictCursor) as db:
         cursor = db.cursor()
         for device in deviceList:
             deviceId = device["deviceId"]
@@ -41,7 +41,7 @@ def update_devicedb(deviceList: dict):
         db.commit()
 
 if __name__ == '__main__':
-    db = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+    db = pymysql.connect(host=host, user=user, password=password, db=dbname, cursorclass=pymysql.cursors.DictCursor)
     cursor=db.cursor()
     cursor.execute("show tables;")
     db.commit()
