@@ -9,21 +9,11 @@ load_dotenv()
 
 db = os.getenv("db")
 
-def device_template(request):
+def devices_template(request):
     print(db)
-    load_device()
+    # load_device()
     context = {"name" : "test"}# }
     return render(request, 'device.html', context)
 
 
-def load_device():
-    with closing(sqlite3.connect(db)) as conn:
-        c = conn.cursor()
-        
-        query = 'SELECT * FROM device'
-        c.execute(query)
-        resp = {}
-        for data in c.fetchall():
-            print(data)
-        conn.commit()
 
