@@ -36,7 +36,7 @@ def update_devicedb(deviceList: dict):
             deviceType = device["deviceType"]
             ## enableCloudService = device["enableCloudService"] or None
             hubDeviceId = device["hubDeviceId"]
-            query = 'INSERT INTO device_devices (deviceid,devicename,deviceType,hubDeviceId) VALUES (%s, %s, %s, %s);'
+            query = 'INSERT INTO devices_device (deviceid,name,Type,hubDeviceId) VALUES (%s, %s, %s, %s);'
             cursor.execute(query,(deviceId, deviceName, deviceType, hubDeviceId))
         db.commit()
 
