@@ -10,6 +10,7 @@ load_dotenv()
 db = os.getenv("db")
 
 def device_template(request):
+    print(db)
     load_device()
     context = {"name" : "test"}# }
     return render(request, 'device.html', context)
